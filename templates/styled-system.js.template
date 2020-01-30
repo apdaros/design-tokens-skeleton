@@ -1,0 +1,68 @@
+<%
+var scales = []
+
+var buildScale = (args) => {
+  const {type, category, scale, alias, nestingLevel} = args
+  scales.push(scale);
+
+  var props = filterByCTI({type, category});
+
+  if (alias) {
+    return `${buildArray({props, ...args})}\n${buildAliases({props, ...args})}`;
+  }
+
+  return buildObject({props, ...args});
+}
+
+var buildArray = ({props, scale, nestingLevel = 2}) => {
+  var scaleValues = _.map(props, prop => `'${prop.value}'`);
+
+  return `const ${scale} = [${scaleValues}]\n`;
+}
+
+var buildAliases = ({props, scale, zero, nestingLevel = 2}) => {
+  return _.map(props, (prop, index) => `${scale}.${propName(prop, nestingLevel)} = '${prop.value}'`).join('\n').concat('\n')
+}
+
+var buildObject = ({props, scale, nestingLevel = 2}) => {
+  var scaleValues = _.map(props, prop => `${propName(prop, nestingLevel)}: '${prop.value}'`).join(',\n  ');
+
+  return `const ${scale} = {\n  ${scaleValues}\n}\n`;
+}
+
+var filterByCTI = ({type, category}) => _.filter(allProperties, item => {
+  if (type && item.attributes.type !== type) {
+    return false;
+  }
+
+  if (category && item.attributes.category !== category) {
+    return false;
+  }
+
+  return true;
+});
+
+var onlyLetters = new RegExp('[^A-Z]', 'i');
+
+var propName = (prop, nestingLevel) => {
+  var name = _.kebabCase(prop.path.slice(nestingLevel))
+  return onlyLetters.test(name) ? `'${name}'` : name
+}
+
+%>
+<%= buildScale({scale: 'space', category: 'size', type: 'space'}) %>
+<%= buildScale({scale: 'breakpoints', category: 'size', type: 'breakpoints', alias: true}) %>
+<%= buildScale({scale: 'fontSizes', category: 'size', type: 'font'}) %>
+<%= buildScale({scale: 'lineHeights', category: 'size', type: 'line-height'}) %>
+<%= buildScale({scale: 'radii', category: 'size', type: 'radius'}) %>
+<%= buildScale({scale: 'fontWeights', category: 'font', type: 'weight'}) %>
+<%= buildScale({scale: 'sizes', category: 'size', type: 'dimension'}) %>
+<%= buildScale({scale: 'fonts', category: 'font', type: 'family'}) %>
+<%= buildScale({scale: 'borderWidths', category: 'size', type: 'border'}) %>
+<%= buildScale({scale: 'colors', category: 'color', nestingLevel: 1}) %>
+
+const theme = {
+  <%= _.map(scales, scale => `${scale}`).join(',\n  ') %>
+}
+
+module.exports.<%= _.camelCase(this.themeName) || 'theme' %> = theme

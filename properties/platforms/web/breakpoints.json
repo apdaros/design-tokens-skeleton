@@ -1,0 +1,12 @@
+{
+  "size": {
+    "breakpoints": {
+      "xxs": {"value": 22.5, "comment": "360px"},
+      "xs": {"value": 48 ,"comment": "768px"},
+      "sm": {"value": 64,"comment": "1024px"},
+      "md": {"value": 85,"comment": "1360px"},
+      "lg": {"value": 88.75,"comment": "1420px"},
+      "xl": {"value": 120,"comment": "1920px"}
+    }
+  }
+}

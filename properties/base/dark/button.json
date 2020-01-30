@@ -1,0 +1,47 @@
+{
+  "color": {
+    "background": {
+      "button": {
+        "branded-solid": {
+          "base": {"value": "#eb1c49"},
+          "active": {"value": "#ed315a"}
+        },
+        "solid": {
+          "base": {"value": "#ffe6f0"},
+          "active": {"value": "#feeff5"}
+        },
+        "outline": {
+          "base": {"value": "transparent"}
+        }
+      }
+    },
+    "font": {
+      "button": {
+        "branded-solid": {
+          "base": {"value": "{color.ui.10.value}"},
+          "active": {"value": "{color.ui.10.value}"}
+        },
+        "solid": {
+          "base": {"value": "#3a1c25"},
+          "active": {"value": "#5b2c3a"}
+        },
+        "outline": {
+          "base": {"value": "#bcbcbc"},
+          "active": {"value": "#cacaca"}
+        }
+      }
+    },
+    "outline": {
+      "button": {
+        "active": {"value": "#7dadd9"}
+      }
+    }
+  },
+  "size": {
+    "border": {
+      "button": {
+        "value": "0.0625", "comment": "1px"
+      }
+    }
+  }
+}

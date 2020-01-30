@@ -1,0 +1,17 @@
+{
+  "size": {
+    "radius": {
+      "standard": {"value": 0.1875, "comment": "3px"}
+    }
+  },
+  "color": {
+    "background": {
+      "screen": {"value": "{color.ui.90.value}"}
+    },
+    "font": {
+      "text": {
+        "standard": {"value": "{color.ui.10.value}"}
+      }
+    }
+  }
+}

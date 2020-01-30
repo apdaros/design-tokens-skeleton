@@ -1,0 +1,51 @@
+<%
+    // for backward compatibility we need to have the user explicitly hide it
+    var showFileHeader = (this.options && this.options.hasOwnProperty('showFileHeader')) ? this.options.showFileHeader : true; if(showFileHeader) {
+        print("// Do not edit directly\n");
+        print("// on " + new Date().toUTCString());
+    }
+%>
+//
+
+<%
+var filteredProps = _.cloneDeep(allProperties)
+
+var filterByCTI = ({type, category}) => {
+  var [passed, rest] = _.partition(filteredProps, item => {
+    if (type && item.attributes.type !== type) {
+      return false;
+    }
+
+    if (category && item.attributes.category !== category) {
+      return false;
+    }
+  
+    return true;
+  });
+
+  filteredProps = rest;
+
+  return passed;
+}
+
+
+  var propName = (prop, slice = 1) => _.camelCase(prop.path.slice(slice))
+%>
+
+import UIKit
+
+public struct <%= this.className %> {
+
+    public struct Colors {
+      <%= _.map(filterByCTI({category: 'color'}), (prop) => 'static let ' + propName(prop) + ' = ' + prop.value).join('\n      ') %>
+    }
+
+    public struct Dimensions {
+      <%= _.map(filterByCTI({category: 'size', type: 'dimension'}), (prop) => `static let ${propName(prop, 2)} = CGSize(width: ${prop.value}, height: ${prop.value})`).join('\n      ') %>
+
+      <%= _.map(filterByCTI({category: 'size'}), (prop) => 'static let ' + propName(prop) + ' = ' + prop.value).join('\n      ') %>
+    }
+
+    <%= _.map(filteredProps, (prop) => 'static let ' + propName(prop) + ' = ' + prop.value).join('\n    ') %>
+
+}

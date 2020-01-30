@@ -1,0 +1,30 @@
+{
+  "color": {
+    "background": {
+      "content-rating": {
+        "free": {"value": "#00a651"},
+        "10": {"value": "#0095da"},
+        "12": {"value": "#ffcb05"},
+        "14": {"value": "#f58220"},
+        "16": {"value": "#ec1d25"},
+        "18": {"value": "#000"}
+      }
+    },
+    "border": {
+      "content-rating": {
+        "value": "rgba(255, 255, 255, 0.6)"
+      }
+    },
+    "text": {
+      "content-rating": {"value": "{color.ui.10.value}"}
+    }
+  },
+  "size": {
+    "dimension": {
+      "content-rating": {"value": 1.5, "comment": "24px"}
+    },
+    "border": {
+      "content-rating": {"value": 0.125, "comment": "2px"}
+    }
+  }
+}

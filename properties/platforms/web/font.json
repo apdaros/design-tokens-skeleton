@@ -1,0 +1,20 @@
+{
+  "size": {
+    "line-height": {
+      "sm": {"value": 1.5, "comment": "24px"},
+      "md": {"value": 1.625, "comment": "26px"},
+      "lg": {"value": 3, "comment": "48px"},
+      "xl": {"value": 3.75, "comment": "60px"}
+    }
+  },
+  "font": {
+    "family": {
+      "standard": {"value": "\"Open Sans\", sans-serif"},
+      "rating": {"value": "Arial Narrow, Arial, sans-serif"}
+    },
+    "weight": {
+      "normal": {"value": "400"},
+      "bold": {"value": "700"}
+    }
+  }
+}

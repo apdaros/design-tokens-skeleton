@@ -1,0 +1,13 @@
+{
+  "size": {
+    "space": {
+      "xxs": {"value": 0.25, "comment": "4px"},
+      "xs": {"value": 0.5, "comment": "8px"},
+      "sm": {"value": 1, "comment": "16px"},
+      "md": {"value": 1.5, "comment": "24px"},
+      "lg": {"value": 2, "comment": "32px"},
+      "xl": {"value": 2.5, "comment": "40px"},
+      "xxl": {"value": 3, "comment": "48px"}
+    }
+  }
+}

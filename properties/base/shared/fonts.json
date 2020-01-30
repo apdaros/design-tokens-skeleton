@@ -1,0 +1,12 @@
+{
+  "size": {
+    "font": {
+      "xxs": {"value": 0.75, "comment": "12px"},
+      "xs": {"value": 1, "comment": "16px"},
+      "sm": {"value": 1.125, "comment": "18px"},
+      "md": {"value": 1.5, "comment": "24px"},
+      "lg": {"value": 2, "comment": "32px"},
+      "xl": {"value": 2.5, "comment": "40px"}
+    }
+  }
+}
